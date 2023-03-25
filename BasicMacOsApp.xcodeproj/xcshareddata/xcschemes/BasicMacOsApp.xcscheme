@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "B6811EA829C32CF700C89C1C"
-               BuildableName = "BasicMacOsApp.app"
-               BlueprintName = "BasicMacOsApp"
+               BuildableName = "CBro.app"
+               BlueprintName = "CBro"
                ReferencedContainer = "container:BasicMacOsApp.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -45,8 +45,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B6811EA829C32CF700C89C1C"
-            BuildableName = "BasicMacOsApp.app"
-            BlueprintName = "BasicMacOsApp"
+            BuildableName = "CBro.app"
+            BlueprintName = "CBro"
             ReferencedContainer = "container:BasicMacOsApp.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -62,8 +62,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B6811EA829C32CF700C89C1C"
-            BuildableName = "BasicMacOsApp.app"
-            BlueprintName = "BasicMacOsApp"
+            BuildableName = "CBro.app"
+            BlueprintName = "CBro"
             ReferencedContainer = "container:BasicMacOsApp.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

@@ -12,16 +12,26 @@
 		B6811EB129C32CF900C89C1C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B6811EB029C32CF900C89C1C /* Assets.xcassets */; };
 		B6811EB429C32CF900C89C1C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B6811EB329C32CF900C89C1C /* Preview Assets.xcassets */; };
 		B6811EC029C335E700C89C1C /* FloatingWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6811EBF29C335E700C89C1C /* FloatingWindow.swift */; };
+		B6A62C8729CED9B800331940 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6A62C8629CED9B800331940 /* Constants.swift */; };
+		B6A62C8929CF373500331940 /* CardReminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6A62C8829CF373500331940 /* CardReminder.swift */; };
+		B6A62C8B29CF38C900331940 /* LeftContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6A62C8A29CF38C900331940 /* LeftContent.swift */; };
+		B6A62C8D29CF3A2C00331940 /* RightContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6A62C8C29CF3A2C00331940 /* RightContent.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		B6811EA929C32CF700C89C1C /* BasicMacOsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BasicMacOsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B6811EA929C32CF700C89C1C /* CBro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CBro.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6811EAC29C32CF700C89C1C /* BasicMacOsAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicMacOsAppApp.swift; sourceTree = "<group>"; };
 		B6811EAE29C32CF700C89C1C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		B6811EB029C32CF900C89C1C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B6811EB329C32CF900C89C1C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		B6811EB529C32CF900C89C1C /* BasicMacOsApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BasicMacOsApp.entitlements; sourceTree = "<group>"; };
 		B6811EBF29C335E700C89C1C /* FloatingWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingWindow.swift; sourceTree = "<group>"; };
+		B6811F1F29C9679C00C89C1C /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
+		B6811F2429C96B4600C89C1C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		B6A62C8629CED9B800331940 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		B6A62C8829CF373500331940 /* CardReminder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardReminder.swift; sourceTree = "<group>"; };
+		B6A62C8A29CF38C900331940 /* LeftContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftContent.swift; sourceTree = "<group>"; };
+		B6A62C8C29CF3A2C00331940 /* RightContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightContent.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,13 +50,14 @@
 			children = (
 				B6811EAB29C32CF700C89C1C /* BasicMacOsApp */,
 				B6811EAA29C32CF700C89C1C /* Products */,
+				B6811F1E29C9679C00C89C1C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
 		B6811EAA29C32CF700C89C1C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				B6811EA929C32CF700C89C1C /* BasicMacOsApp.app */,
+				B6811EA929C32CF700C89C1C /* CBro.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -54,12 +65,17 @@
 		B6811EAB29C32CF700C89C1C /* BasicMacOsApp */ = {
 			isa = PBXGroup;
 			children = (
+				B6811F2429C96B4600C89C1C /* Info.plist */,
 				B6811EAC29C32CF700C89C1C /* BasicMacOsAppApp.swift */,
 				B6811EAE29C32CF700C89C1C /* ContentView.swift */,
 				B6811EB029C32CF900C89C1C /* Assets.xcassets */,
 				B6811EB529C32CF900C89C1C /* BasicMacOsApp.entitlements */,
 				B6811EB229C32CF900C89C1C /* Preview Content */,
 				B6811EBF29C335E700C89C1C /* FloatingWindow.swift */,
+				B6A62C8629CED9B800331940 /* Constants.swift */,
+				B6A62C8829CF373500331940 /* CardReminder.swift */,
+				B6A62C8A29CF38C900331940 /* LeftContent.swift */,
+				B6A62C8C29CF3A2C00331940 /* RightContent.swift */,
 			);
 			path = BasicMacOsApp;
 			sourceTree = "<group>";
@@ -72,12 +88,20 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		B6811F1E29C9679C00C89C1C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B6811F1F29C9679C00C89C1C /* EventKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		B6811EA829C32CF700C89C1C /* BasicMacOsApp */ = {
+		B6811EA829C32CF700C89C1C /* CBro */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B6811EB829C32CF900C89C1C /* Build configuration list for PBXNativeTarget "BasicMacOsApp" */;
+			buildConfigurationList = B6811EB829C32CF900C89C1C /* Build configuration list for PBXNativeTarget "CBro" */;
 			buildPhases = (
 				B6811EA529C32CF700C89C1C /* Sources */,
 				B6811EA629C32CF700C89C1C /* Frameworks */,
@@ -87,9 +111,9 @@
 			);
 			dependencies = (
 			);
-			name = BasicMacOsApp;
+			name = CBro;
 			productName = BasicMacOsApp;
-			productReference = B6811EA929C32CF700C89C1C /* BasicMacOsApp.app */;
+			productReference = B6811EA929C32CF700C89C1C /* CBro.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -120,7 +144,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				B6811EA829C32CF700C89C1C /* BasicMacOsApp */,
+				B6811EA829C32CF700C89C1C /* CBro */,
 			);
 		};
 /* End PBXProject section */
@@ -142,9 +166,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B6A62C8929CF373500331940 /* CardReminder.swift in Sources */,
+				B6A62C8D29CF3A2C00331940 /* RightContent.swift in Sources */,
 				B6811EC029C335E700C89C1C /* FloatingWindow.swift in Sources */,
+				B6A62C8B29CF38C900331940 /* LeftContent.swift in Sources */,
 				B6811EAF29C32CF700C89C1C /* ContentView.swift in Sources */,
 				B6811EAD29C32CF700C89C1C /* BasicMacOsAppApp.swift in Sources */,
+				B6A62C8729CED9B800331940 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -201,6 +229,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_KEY_NSCalendarsUsageDescription = "Request to access Calendar";
+				INFOPLIST_KEY_NSRemindersUsageDescription = "Request access to reminder";
 				MACOSX_DEPLOYMENT_TARGET = 13.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -255,6 +285,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_KEY_NSCalendarsUsageDescription = "Request to access Calendar";
+				INFOPLIST_KEY_NSRemindersUsageDescription = "Request access to reminder";
 				MACOSX_DEPLOYMENT_TARGET = 13.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -278,6 +310,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BasicMacOsApp/Info.plist;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -305,6 +338,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BasicMacOsApp/Info.plist;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -330,7 +364,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B6811EB829C32CF900C89C1C /* Build configuration list for PBXNativeTarget "BasicMacOsApp" */ = {
+		B6811EB829C32CF900C89C1C /* Build configuration list for PBXNativeTarget "CBro" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B6811EB929C32CF900C89C1C /* Debug */,
