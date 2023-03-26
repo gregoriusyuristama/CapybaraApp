@@ -52,7 +52,7 @@ struct CardReminder: View {
 //        .frame(height: 112)
         .background(Color(.white))
         .cornerRadius(16)
-        .padding(.bottom, 8)
+        .padding(.bottom, 12)
     }
     func getRandomImage(currentIndex: Int) -> Int{
         return currentIndex % kCapyCardIcon.count

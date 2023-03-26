@@ -158,7 +158,6 @@ func showBubbleChat(reminderText: String, reminderTime: String, toLeft: Bool) ->
     } else {
         
         let quotes = kCapyQuotes.randomElement()!
-        print(quotes)
         bubbleChatString += "\n\n\(quotes)"
         
         attributedString = NSMutableAttributedString(string: bubbleChatString)

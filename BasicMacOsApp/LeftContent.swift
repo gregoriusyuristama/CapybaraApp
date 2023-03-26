@@ -17,7 +17,7 @@ struct LeftContent: View {
                         .resizable()
                         .scaledToFit()
                         .padding(.top, 10)
-                        .padding(.leading, 13)
+                        .padding(.leading, 14)
                     VStack {
                         Text("\(kGreetingText.randomElement()!)👋")
                             .font(.largeTitle)
@@ -32,7 +32,7 @@ struct LeftContent: View {
                         //                                    .fontWeight(.regular)
                             .font(.title2)
                             .padding(.bottom, 5)
-                            .padding(.leading, -2)
+                            .padding(.leading, 2)
                             .padding(.top, -80)
                             .foregroundColor(.black)
                             .frame(width: 230)
@@ -43,7 +43,7 @@ struct LeftContent: View {
                             .font(.title2)
                             .foregroundColor(.black)
                             .padding(.top, -20)
-                            .padding(.leading, 14)
+                            .padding(.leading, 18)
                             .fontWeight(.bold)
                             .frame(width: 230)
                     }
@@ -54,12 +54,14 @@ struct LeftContent: View {
                             
                                 .frame(width: 76)
                             
-                        }else{
+                        } else {
                             Text("Catch Me")
                                 .foregroundColor(.white)
                                 .frame(width: 76)
                         }
-                    }  .toggleStyle(.switch)
+                    }
+                    .toggleStyle(.switch)
+                    .accentColor(Color("toggleColor"))
                     
                         .alignmentGuide(HorizontalAlignment.custom)
                     { d in d[.trailing] * -0.1}

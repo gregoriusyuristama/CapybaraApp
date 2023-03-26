@@ -25,7 +25,7 @@ struct RightContent: View {
                 }
                 Spacer()
             }
-            .padding(.leading, 20)
+            .padding(.leading, 12)
             .padding(.top, 20)
                 if reminders.isEmpty{
                     Image("empty agendas")
@@ -39,6 +39,7 @@ struct RightContent: View {
                             CardReminder(reminderTitle: reminders[index].title, reminderTime: (reminders[index].dueDateComponents?.date)!, idxQuote: index, idxImage: index)
                         }
                     }
+                    .padding(.leading, -8)
             }
             
         }.background(Color("coklat"))

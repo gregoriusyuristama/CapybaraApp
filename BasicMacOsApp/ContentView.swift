@@ -53,7 +53,6 @@ struct ContentView: View {
                         let sortedReminders = fetchedReminders?.sorted(by: { $0.dueDateComponents?.date ?? Date.distantPast < $1.dueDateComponents?.date ?? Date.distantPast })
                         reminders = sortedReminders ?? []
 //                        reminders = []
-                        print(reminders)
                     }
 
                 } else {
@@ -65,82 +64,82 @@ struct ContentView: View {
         
     }
     
-    func openMyWindow(windowRef: MovingWindow)
-    {
-
-        let positionPublisher: CurrentValueSubject<Int,Never> = CurrentValueSubject(0)
-        let isMovingPublisher: CurrentValueSubject<Bool, Never> = CurrentValueSubject(false)
-        
-        
-        windowRef.level = .floating
-        windowRef.hasShadow = false
-        windowRef.backgroundColor = .clear
-        windowRef.isMovableByWindowBackground = true
-        windowRef.titlebarAppearsTransparent = true
-        windowRef.standardWindowButton(.closeButton)?.isHidden = true
-        windowRef.standardWindowButton(.miniaturizeButton)?.isHidden = true
-        windowRef.titleVisibility = .hidden
-        
-        var posX: Double = 0
-        var posY: Double = 0
-        windowRef.standardWindowButton(.zoomButton)?.isHidden = true
-//        let reminderTime = reminders[reminders.count-1].dueDateComponents?.date
-        let floatWindow = reminders.isEmpty
-        ? FloatingWindow(positionPublisher: positionPublisher, isMovingPublisher: isMovingPublisher, reminderTitle: "Add new reminder", reminderTime: "Reminders App")
-        : FloatingWindow(positionPublisher: positionPublisher, isMovingPublisher:  isMovingPublisher, reminderTitle: reminders[0].title, reminderTime: Date.getReminderTime(dueDate: (reminders[0].dueDateComponents?.date)!))
-        
-        windowRef.contentView = NSHostingView(rootView: floatWindow
-            .onReceive(timer){ time in
-                let nextPosition = randPosition(currentX: posX, currentY: posY, positionPublisher: positionPublisher)
-
-                
-                let xDifference = nextPosition.x - posX
-                let yDifference = nextPosition.y - posY
-                positionPublisher.send(Int(xDifference))
-                
-                posX = nextPosition.x
-                posY = nextPosition.y
-                
-                let distance = sqrt(pow((xDifference), 2.0) + pow((yDifference), 2.0))
-                windowRef.animateTime = distance/80
-                
-                
-                var isMoving = false
-                
-                if !isMoving{
-                    isMoving = true
-                    isMovingPublisher.send(isMoving)
-                    NSAnimationContext.runAnimationGroup({ context in
-                        context.duration = distance/80
-                        context.allowsImplicitAnimation = true
-                        windowRef.setFrame(.init(origin: nextPosition, size: CGSize(width: 500, height: 500)), display: true)
-                    }, completionHandler: {
-                        isMoving = false
-                        isMovingPublisher.send(isMoving)
-                    })
-                }
-                
-            }
-                                              
-        )
-        windowRef.makeKeyAndOrderFront(nil)
-
-        }
-
-
-    func randPosition(currentX: Double, currentY: Double, positionPublisher: CurrentValueSubject<Int, Never>) -> CGPoint {
-        var pos: CGPoint{
-                guard let screen = NSScreen.main?.visibleFrame.size else{
-                    return .zero
-                }
-
-            let posX = CGFloat.random(in: 0...screen.width - 500)
-            let posY = CGFloat.random(in: 0...screen.height - 500)
-            
-            return .init(x: posX, y: posY)
-            }
-        return pos
-    }
+//    func openMyWindow(windowRef: MovingWindow)
+//    {
+//
+//        let positionPublisher: CurrentValueSubject<Int,Never> = CurrentValueSubject(0)
+//        let isMovingPublisher: CurrentValueSubject<Bool, Never> = CurrentValueSubject(false)
+//        
+//        
+//        windowRef.level = .floating
+//        windowRef.hasShadow = false
+//        windowRef.backgroundColor = .clear
+//        windowRef.isMovableByWindowBackground = true
+//        windowRef.titlebarAppearsTransparent = true
+//        windowRef.standardWindowButton(.closeButton)?.isHidden = true
+//        windowRef.standardWindowButton(.miniaturizeButton)?.isHidden = true
+//        windowRef.titleVisibility = .hidden
+//        
+//        var posX: Double = 0
+//        var posY: Double = 0
+//        windowRef.standardWindowButton(.zoomButton)?.isHidden = true
+////        let reminderTime = reminders[reminders.count-1].dueDateComponents?.date
+//        let floatWindow = reminders.isEmpty
+//        ? FloatingWindow(positionPublisher: positionPublisher, isMovingPublisher: isMovingPublisher, reminderTitle: "Add new reminder", reminderTime: "Reminders App")
+//        : FloatingWindow(positionPublisher: positionPublisher, isMovingPublisher:  isMovingPublisher, reminderTitle: reminders[0].title, reminderTime: Date.getReminderTime(dueDate: (reminders[0].dueDateComponents?.date)!))
+//        
+//        windowRef.contentView = NSHostingView(rootView: floatWindow
+//            .onReceive(timer){ time in
+//                let nextPosition = randPosition(currentX: posX, currentY: posY, positionPublisher: positionPublisher)
+//
+//                
+//                let xDifference = nextPosition.x - posX
+//                let yDifference = nextPosition.y - posY
+//                positionPublisher.send(Int(xDifference))
+//                
+//                posX = nextPosition.x
+//                posY = nextPosition.y
+//                
+//                let distance = sqrt(pow((xDifference), 2.0) + pow((yDifference), 2.0))
+//                windowRef.animateTime = distance/80
+//                
+//                
+//                var isMoving = false
+//                
+//                if !isMoving{
+//                    isMoving = true
+//                    isMovingPublisher.send(isMoving)
+//                    NSAnimationContext.runAnimationGroup({ context in
+//                        context.duration = distance/80
+//                        context.allowsImplicitAnimation = true
+//                        windowRef.setFrame(.init(origin: nextPosition, size: CGSize(width: 500, height: 500)), display: true)
+//                    }, completionHandler: {
+//                        isMoving = false
+//                        isMovingPublisher.send(isMoving)
+//                    })
+//                }
+//                
+//            }
+//                                              
+//        )
+//        windowRef.makeKeyAndOrderFront(nil)
+//
+//        }
+//
+//
+//    func randPosition(currentX: Double, currentY: Double, positionPublisher: CurrentValueSubject<Int, Never>) -> CGPoint {
+//        var pos: CGPoint{
+//                guard let screen = NSScreen.main?.visibleFrame.size else{
+//                    return .zero
+//                }
+//
+//            let posX = CGFloat.random(in: 0...screen.width - 500)
+//            let posY = CGFloat.random(in: 0...screen.height - 500)
+//            
+//            return .init(x: posX, y: posY)
+//            }
+//        return pos
+//    }
     
 }
 
