@@ -62,3 +62,12 @@ let kIdleImageArray: [NSImage] = [
     NSImage(named: "CBro Frame 1")!,
     NSImage(named: "CBro Frame 1")!,
 ]
+
+let kCapyQuotes: [String] = [
+    "Dive into challenges like a capybara into water",
+    "Create a social network like a capybara",
+    "Develop a unique approach like a capybara's digestive system",
+    "Run towards your goals with the speed of a capybara",
+    "Adapt to different enivronments like a capybara",
+    "Feed your mind and soul with experiences like a capybara's diet",
+]

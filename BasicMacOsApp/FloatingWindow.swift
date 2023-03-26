@@ -11,7 +11,6 @@ import Combine
 
 struct FloatingWindow: View {
     @State var imageSequence: [NSImage] = kIdleImageArray
-//    @State var sampleText: String = "asudqwo"
     var positionPublisher: CurrentValueSubject<Int,Never>
     var isMovingPublisher: CurrentValueSubject<Bool, Never>
     var reminderTitle: String
@@ -52,7 +51,6 @@ struct AnimatedAnimalView: NSViewRepresentable{
     var reminderTitle: String
     var reminderTime: String
     
-    
     func makeNSView(context: Context) -> NSAnimatedAnimalView {
         let view = NSAnimatedAnimalView()
         return view
@@ -60,21 +58,20 @@ struct AnimatedAnimalView: NSViewRepresentable{
     
     
     func updateNSView(_ nsView: NSAnimatedAnimalView, context: Context) {
-        print("Update UI")
-        print(isMoving)
+//        print("Update UI")
+//        print(isMoving)
         nsView.layer?.sublayers?.removeAll()
         nsView.subviews.removeAll()
         
         if isMoving{
             if movingToLeft {
-                
                 nsView.layer?.addSublayer(walkingAnimation(imageSequence: kImageSequenceWindow))
-                nsView.subviews.append(showBubbleChat(reminderText: reminderTitle, reminderTime: reminderTime, toLeft: true))
+//                nsView.subviews.append(showBubbleChat(reminderText: reminderTitle, reminderTime: reminderTime, toLeft: true))
                 
             } else {
     //            nsView.layer?.sublayers?.last?.removeFromSuperlayer()
                 nsView.layer?.addSublayer(walkingAnimation(imageSequence: kInvertedImageSequenceWindow))
-                nsView.subviews.append(showBubbleChat(reminderText: reminderTitle, reminderTime: reminderTime, toLeft: false))
+//                nsView.subviews.append(showBubbleChat(reminderText: reminderTitle, reminderTime: reminderTime, toLeft: false))
             }
         } else {
             nsView.layer?.addSublayer(walkingAnimation(imageSequence: kIdleImageArray))
@@ -96,7 +93,7 @@ struct AnimatedAnimalView: NSViewRepresentable{
 
         let imageView = NSImageView()
         imageView.wantsLayer = true
-        imageView.setFrameSize(NSSize(width: 230, height: 204))
+        imageView.setFrameSize(NSSize(width: 230, height: 198))
         imageView.setFrameOrigin(CGPoint(x: 0, y: 0))
         imageView.layer = CALayer()
 
@@ -125,36 +122,63 @@ func showBubbleChat(reminderText: String, reminderTime: String, toLeft: Bool) ->
     
     let chatImageView = NSImageView(image: chatImage)
     chatImageView.wantsLayer = true
-    chatImageView.setFrameSize(NSSize(width: 200, height: 200))
+    chatImageView.setFrameSize(NSSize(width: 236, height: 248))
     chatImageView.setFrameOrigin(CGPoint(x: 0, y: 180))
 
 
     let stackView = NSStackView()
     
     let label = NSTextField()
-    label.frame = NSRect(x: 0, y: 0, width: 150, height: 100)
-    let bubbleChatString = "Hey 👋\n\nDon't forget to\n\n\(reminderText)\nAt \(reminderTime)"
-    let attributedString = NSMutableAttributedString(string: bubbleChatString)
+    label.frame = NSRect(x: 0, y: 0, width: 200, height: 200)
+    var bubbleChatString = "Hey 👋"
+    var attributedString = NSMutableAttributedString(string: bubbleChatString)
     
-    let boldFontAttribute = [NSAttributedString.Key.font: NSFont.boldSystemFont(ofSize: 12)]
+    let boldFontAttribute = [NSAttributedString.Key.font: NSFont.boldSystemFont(ofSize: 22)]
+    let regFontAttribute = [NSAttributedString.Key.font: NSFont.systemFont(ofSize: 22)]
     
+    let isShowingReminder = Bool.random()
+    
+    if isShowingReminder {
+        bubbleChatString += "\n\nDon't forget to\n\n\(reminderText)\nat \(reminderTime)"
+        
+        attributedString = NSMutableAttributedString(string: bubbleChatString)
+        
+        let rangeReminderText = (bubbleChatString as NSString).range(of: "\(reminderText)")
+        
+        let rangeReminderTime = (bubbleChatString as NSString).range(of: "\(reminderTime)")
+        
+        let rangeDontForget = (bubbleChatString as NSString).range(of: "Don't forget to")
+        let rangeAt = (bubbleChatString as NSString).range(of: "at")
+        
+        attributedString.addAttributes(boldFontAttribute, range: rangeReminderText)
+        attributedString.addAttributes(boldFontAttribute, range: rangeReminderTime)
+        attributedString.addAttributes(regFontAttribute, range: rangeDontForget)
+        attributedString.addAttributes(regFontAttribute, range: rangeAt)
+        
+    } else {
+        
+        let quotes = kCapyQuotes.randomElement()!
+        print(quotes)
+        bubbleChatString += "\n\n\(quotes)"
+        
+        attributedString = NSMutableAttributedString(string: bubbleChatString)
+        
+        let rangeQuotes = (bubbleChatString as NSString).range(of: quotes)
+        
+        attributedString.addAttributes(regFontAttribute, range: rangeQuotes)
+        
+    }
     let heyRange = (bubbleChatString as NSString).range(of: "Hey 👋")
-    
-    let rangeReminderText = (bubbleChatString as NSString).range(of: "\(reminderText)")
-    
-    let rangeReminderTime = (bubbleChatString as NSString).range(of: "\(reminderTime)")
-    
     attributedString.addAttributes(boldFontAttribute, range: heyRange)
-    attributedString.addAttributes(boldFontAttribute, range: rangeReminderText)
-    attributedString.addAttributes(boldFontAttribute, range: rangeReminderTime)
     
     label.attributedStringValue = attributedString
+    
     label.backgroundColor = .clear
     label.textColor = .black
     label.isBezeled = false
     label.isEditable = false
 
-    label.setFrameOrigin(CGPoint(x: ((chatImageView.layer?.frame.width)! - label.frame.width)/2, y: ((chatImageView.layer?.frame.height)! - label.frame.height)/2 + 20))
+    label.setFrameOrigin(CGPoint(x: ((chatImageView.layer?.frame.width)! - label.frame.width)/2, y: ((chatImageView.layer?.frame.height)! - label.frame.height)/2))
     
     let posAnimation = CABasicAnimation(keyPath: "position")
     if toLeft {

@@ -27,14 +27,12 @@ struct RightContent: View {
             }
             .padding(.leading, 20)
             .padding(.top, 20)
-
-                
                 if reminders.isEmpty{
                     Image("empty agendas")
                         .resizable()
-                        .frame(width: 260, height: 250)
+                        .frame(width: 320, height: 310)
                         .aspectRatio(contentMode: .fit)
-                        .padding(.top, 50)
+//                        .padding(.top, 50)
                 } else {
                     List{
                         ForEach(reminders.indices, id: \.self){ index in
@@ -76,7 +74,7 @@ extension Date {
     static func getReminderTime(dueDate: Date) -> String {
     //    let date = Date()
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "h:mm a"
+        dateFormatter.dateFormat = "HH.mm"
         let timeFormatted = dateFormatter.string(from: dueDate)
 
         return timeFormatted // prints the current day name as a string
