@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1420"
+   LastUpgradeVersion = "1500"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -17,7 +17,7 @@
                BlueprintIdentifier = "B6811EA829C32CF700C89C1C"
                BuildableName = "CBro.app"
                BlueprintName = "CBro"
-               ReferencedContainer = "container:BasicMacOsApp.xcodeproj">
+               ReferencedContainer = "container:CBroApp.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -47,7 +47,7 @@
             BlueprintIdentifier = "B6811EA829C32CF700C89C1C"
             BuildableName = "CBro.app"
             BlueprintName = "CBro"
-            ReferencedContainer = "container:BasicMacOsApp.xcodeproj">
+            ReferencedContainer = "container:CBroApp.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -64,7 +64,7 @@
             BlueprintIdentifier = "B6811EA829C32CF700C89C1C"
             BuildableName = "CBro.app"
             BlueprintName = "CBro"
-            ReferencedContainer = "container:BasicMacOsApp.xcodeproj">
+            ReferencedContainer = "container:CBroApp.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
