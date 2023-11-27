@@ -44,7 +44,7 @@ struct ContentView: View {
             .onAppear(){
             let eventStore = EKEventStore()
 
-            eventStore.requestAccess(to: .reminder) { granted, error in
+                eventStore.requestAccess(to: .reminder) { granted, error in
                 if granted {
                     let predicate = eventStore.predicateForIncompleteReminders(withDueDateStarting: Date(), ending: Calendar.current.date(byAdding: .day, value: 1, to: Date()), calendars: nil)
                     
@@ -52,6 +52,7 @@ struct ContentView: View {
                     eventStore.fetchReminders(matching: predicate) { fetchedReminders in
                         let sortedReminders = fetchedReminders?.sorted(by: { $0.dueDateComponents?.date ?? Date.distantPast < $1.dueDateComponents?.date ?? Date.distantPast })
                         reminders = sortedReminders ?? []
+                        print(reminders)
 //                        reminders = []
                     }
 
