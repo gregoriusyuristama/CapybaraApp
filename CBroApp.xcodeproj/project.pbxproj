@@ -317,8 +317,8 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CBroApp/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
-				INFOPLIST_KEY_NSCalendarsUsageDescription = "Request to access Calendar";
-				INFOPLIST_KEY_NSRemindersUsageDescription = "Request access to reminder";
+				INFOPLIST_KEY_NSCalendarsUsageDescription = "We need access to your calendars to display within our app. This allows you to seamlessly integrate with your schedule";
+				INFOPLIST_KEY_NSRemindersUsageDescription = "We need access to your reminders to display within our app. This allows you to seamlessly integrate with your schedule";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -348,8 +348,8 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CBroApp/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
-				INFOPLIST_KEY_NSCalendarsUsageDescription = "Request to access Calendar";
-				INFOPLIST_KEY_NSRemindersUsageDescription = "Request access to reminder";
+				INFOPLIST_KEY_NSCalendarsUsageDescription = "We need access to your calendars to display within our app. This allows you to seamlessly integrate with your schedule";
+				INFOPLIST_KEY_NSRemindersUsageDescription = "We need access to your reminders to display within our app. This allows you to seamlessly integrate with your schedule";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
