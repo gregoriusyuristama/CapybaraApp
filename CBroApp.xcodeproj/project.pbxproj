@@ -12,6 +12,7 @@
 		B6811EB129C32CF900C89C1C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B6811EB029C32CF900C89C1C /* Assets.xcassets */; };
 		B6811EB429C32CF900C89C1C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B6811EB329C32CF900C89C1C /* Preview Assets.xcassets */; };
 		B6811EC029C335E700C89C1C /* FloatingWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6811EBF29C335E700C89C1C /* FloatingWindow.swift */; };
+		B6A222F82B21CEE800441F08 /* ReminderObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6A222F72B21CEE800441F08 /* ReminderObserver.swift */; };
 		B6A62C8729CED9B800331940 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6A62C8629CED9B800331940 /* Constants.swift */; };
 		B6A62C8929CF373500331940 /* CardReminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6A62C8829CF373500331940 /* CardReminder.swift */; };
 		B6A62C8B29CF38C900331940 /* LeftContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6A62C8A29CF38C900331940 /* LeftContent.swift */; };
@@ -28,6 +29,7 @@
 		B6811EBF29C335E700C89C1C /* FloatingWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingWindow.swift; sourceTree = "<group>"; };
 		B6811F1F29C9679C00C89C1C /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
 		B6811F2429C96B4600C89C1C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		B6A222F72B21CEE800441F08 /* ReminderObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderObserver.swift; sourceTree = "<group>"; };
 		B6A62C8629CED9B800331940 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		B6A62C8829CF373500331940 /* CardReminder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardReminder.swift; sourceTree = "<group>"; };
 		B6A62C8A29CF38C900331940 /* LeftContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftContent.swift; sourceTree = "<group>"; };
@@ -76,6 +78,7 @@
 				B6A62C8829CF373500331940 /* CardReminder.swift */,
 				B6A62C8A29CF38C900331940 /* LeftContent.swift */,
 				B6A62C8C29CF3A2C00331940 /* RightContent.swift */,
+				B6A222F72B21CEE800441F08 /* ReminderObserver.swift */,
 			);
 			path = CBroApp;
 			sourceTree = "<group>";
@@ -173,6 +176,7 @@
 				B6811EAF29C32CF700C89C1C /* ContentView.swift in Sources */,
 				B6811EAD29C32CF700C89C1C /* CBroApp.swift in Sources */,
 				B6A62C8729CED9B800331940 /* Constants.swift in Sources */,
+				B6A222F82B21CEE800441F08 /* ReminderObserver.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -317,7 +321,6 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CBroApp/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
-				INFOPLIST_KEY_NSCalendarsUsageDescription = "We need access to your calendars to display within our app. This allows you to seamlessly integrate with your schedule";
 				INFOPLIST_KEY_NSRemindersUsageDescription = "We need access to your reminders to display within our app. This allows you to seamlessly integrate with your schedule";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -348,7 +351,6 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CBroApp/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
-				INFOPLIST_KEY_NSCalendarsUsageDescription = "We need access to your calendars to display within our app. This allows you to seamlessly integrate with your schedule";
 				INFOPLIST_KEY_NSRemindersUsageDescription = "We need access to your reminders to display within our app. This allows you to seamlessly integrate with your schedule";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

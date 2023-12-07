@@ -13,26 +13,24 @@ var timer = Timer.publish(every: 12, on: .main, in: .common).autoconnect()
 var movableWindow: MovingWindow = MovingWindow()
 
 struct ContentView: View {
-    @State private var reminders: [EKReminder] = []
+    @StateObject private var reminderObserver = ReminderObserver()
     @State private var showFloat: Bool = false
     @State private var controller: MyWindowController? = nil
     
     var body: some View {
         HStack{
             LeftContent(showFloat: $showFloat)
-            RightContent(reminders: $reminders)
+            RightContent(reminders: $reminderObserver.reminders)
         }
         .background(Color("coklat"))
         .frame(width: 618, height: 428)
         .onChange(of: showFloat) { showed in
             if showed {
                 if controller == nil {
-                     controller = MyWindowController(reminders: reminders)
-                 }
-                 controller?.showWindow(nil)
-              
-//                openMyWindow(windowRef: movableWindow)
+                    controller = MyWindowController(reminders: reminderObserver.reminders)
                 }
+                controller?.showWindow(nil)
+            }
             else {
                 if let controller = controller {
                     controller.close()
@@ -40,107 +38,12 @@ struct ContentView: View {
                     self.controller = nil
                 }
             }
-            }
-            .onAppear(){
-            let eventStore = EKEventStore()
-
-                eventStore.requestAccess(to: .reminder) { granted, error in
-                if granted {
-                    let predicate = eventStore.predicateForIncompleteReminders(withDueDateStarting: Date(), ending: Calendar.current.date(byAdding: .day, value: 1, to: Date()), calendars: nil)
-                    
-                    
-                    eventStore.fetchReminders(matching: predicate) { fetchedReminders in
-                        let sortedReminders = fetchedReminders?.sorted(by: { $0.dueDateComponents?.date ?? Date.distantPast < $1.dueDateComponents?.date ?? Date.distantPast })
-                        reminders = sortedReminders ?? []
-                        print(reminders)
-//                        reminders = []
-                    }
-
-                } else {
-//                    reminders = []
-                }
-            }
         }
-        
-        
+        .onReceive(reminderObserver.$reminders, perform: { _ in
+            reminderObserver.fetchReminders()
+        })
     }
     
-//    func openMyWindow(windowRef: MovingWindow)
-//    {
-//
-//        let positionPublisher: CurrentValueSubject<Int,Never> = CurrentValueSubject(0)
-//        let isMovingPublisher: CurrentValueSubject<Bool, Never> = CurrentValueSubject(false)
-//        
-//        
-//        windowRef.level = .floating
-//        windowRef.hasShadow = false
-//        windowRef.backgroundColor = .clear
-//        windowRef.isMovableByWindowBackground = true
-//        windowRef.titlebarAppearsTransparent = true
-//        windowRef.standardWindowButton(.closeButton)?.isHidden = true
-//        windowRef.standardWindowButton(.miniaturizeButton)?.isHidden = true
-//        windowRef.titleVisibility = .hidden
-//        
-//        var posX: Double = 0
-//        var posY: Double = 0
-//        windowRef.standardWindowButton(.zoomButton)?.isHidden = true
-////        let reminderTime = reminders[reminders.count-1].dueDateComponents?.date
-//        let floatWindow = reminders.isEmpty
-//        ? FloatingWindow(positionPublisher: positionPublisher, isMovingPublisher: isMovingPublisher, reminderTitle: "Add new reminder", reminderTime: "Reminders App")
-//        : FloatingWindow(positionPublisher: positionPublisher, isMovingPublisher:  isMovingPublisher, reminderTitle: reminders[0].title, reminderTime: Date.getReminderTime(dueDate: (reminders[0].dueDateComponents?.date)!))
-//        
-//        windowRef.contentView = NSHostingView(rootView: floatWindow
-//            .onReceive(timer){ time in
-//                let nextPosition = randPosition(currentX: posX, currentY: posY, positionPublisher: positionPublisher)
-//
-//                
-//                let xDifference = nextPosition.x - posX
-//                let yDifference = nextPosition.y - posY
-//                positionPublisher.send(Int(xDifference))
-//                
-//                posX = nextPosition.x
-//                posY = nextPosition.y
-//                
-//                let distance = sqrt(pow((xDifference), 2.0) + pow((yDifference), 2.0))
-//                windowRef.animateTime = distance/80
-//                
-//                
-//                var isMoving = false
-//                
-//                if !isMoving{
-//                    isMoving = true
-//                    isMovingPublisher.send(isMoving)
-//                    NSAnimationContext.runAnimationGroup({ context in
-//                        context.duration = distance/80
-//                        context.allowsImplicitAnimation = true
-//                        windowRef.setFrame(.init(origin: nextPosition, size: CGSize(width: 500, height: 500)), display: true)
-//                    }, completionHandler: {
-//                        isMoving = false
-//                        isMovingPublisher.send(isMoving)
-//                    })
-//                }
-//                
-//            }
-//                                              
-//        )
-//        windowRef.makeKeyAndOrderFront(nil)
-//
-//        }
-//
-//
-//    func randPosition(currentX: Double, currentY: Double, positionPublisher: CurrentValueSubject<Int, Never>) -> CGPoint {
-//        var pos: CGPoint{
-//                guard let screen = NSScreen.main?.visibleFrame.size else{
-//                    return .zero
-//                }
-//
-//            let posX = CGFloat.random(in: 0...screen.width - 500)
-//            let posY = CGFloat.random(in: 0...screen.height - 500)
-//            
-//            return .init(x: posX, y: posY)
-//            }
-//        return pos
-//    }
     
 }
 
@@ -193,7 +96,7 @@ class MyWindowController: NSWindowController {
         var posX: Double = 0
         var posY: Double = 0
         movableWindow.standardWindowButton(.zoomButton)?.isHidden = true
-//        let reminderTime = reminders[reminders.count-1].dueDateComponents?.date
+        //        let reminderTime = reminders[reminders.count-1].dueDateComponents?.date
         let floatWindow = reminders.isEmpty
         ? FloatingWindow(positionPublisher: positionPublisher, isMovingPublisher: isMovingPublisher, reminderTitle: "Add new reminder", reminderTime: "Reminders App")
         : FloatingWindow(positionPublisher: positionPublisher, isMovingPublisher:  isMovingPublisher, reminderTitle: reminders[0].title, reminderTime: Date.getReminderTime(dueDate: (reminders[0].dueDateComponents?.date)!))
@@ -201,7 +104,7 @@ class MyWindowController: NSWindowController {
         movableWindow.contentView = NSHostingView(rootView: floatWindow
             .onReceive(timer){ time in
                 let nextPosition = randPosition(currentX: posX, currentY: posY, positionPublisher: positionPublisher)
-
+                
                 
                 let xDifference = nextPosition.x - posX
                 let yDifference = nextPosition.y - posY
@@ -230,24 +133,24 @@ class MyWindowController: NSWindowController {
                 }
                 
             }
-                                              
+                                                  
         )
         movableWindow.makeKeyAndOrderFront(nil)
     }
-
+    
 }
 
 func randPosition(currentX: Double, currentY: Double, positionPublisher: CurrentValueSubject<Int, Never>) -> CGPoint {
     var pos: CGPoint{
-            guard let screen = NSScreen.main?.visibleFrame.size else{
-                return .zero
-            }
-
+        guard let screen = NSScreen.main?.visibleFrame.size else{
+            return .zero
+        }
+        
         let posX = CGFloat.random(in: 0...screen.width - 500)
         let posY = CGFloat.random(in: 0...screen.height - 500)
         
         return .init(x: posX, y: posY)
-        }
+    }
     return pos
 }
 
