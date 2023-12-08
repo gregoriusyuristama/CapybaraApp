@@ -29,6 +29,7 @@
 		B6811F1F29C9679C00C89C1C /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
 		B6811F2429C96B4600C89C1C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		B6A222F72B21CEE800441F08 /* ReminderObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderObserver.swift; sourceTree = "<group>"; };
+		B6A222F92B22BD0000441F08 /* CBro.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CBro.entitlements; sourceTree = "<group>"; };
 		B6A62C8629CED9B800331940 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		B6A62C8829CF373500331940 /* CardReminder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardReminder.swift; sourceTree = "<group>"; };
 		B6A62C8A29CF38C900331940 /* LeftContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftContent.swift; sourceTree = "<group>"; };
@@ -49,6 +50,7 @@
 		B6811EA029C32CF700C89C1C = {
 			isa = PBXGroup;
 			children = (
+				B6A222F92B22BD0000441F08 /* CBro.entitlements */,
 				B6811EAB29C32CF700C89C1C /* CBroApp */,
 				B6811EAA29C32CF700C89C1C /* Products */,
 				B6811F1E29C9679C00C89C1C /* Frameworks */,
@@ -305,7 +307,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = "";
+				CODE_SIGN_ENTITLEMENTS = CBro.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_INJECT_BASE_ENTITLEMENTS = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -338,7 +340,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = "";
+				CODE_SIGN_ENTITLEMENTS = CBro.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_INJECT_BASE_ENTITLEMENTS = YES;
 				CODE_SIGN_STYLE = Automatic;
